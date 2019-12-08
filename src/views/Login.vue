@@ -1,5 +1,12 @@
 <template>
   <div class="about">
-    <h1>我是登录页</h1>
+     <img class="img" alt="登陆页面" src="@/assets/images/login.jpg">
   </div>
 </template>
+
+<style scoped>
+.img{
+  height: 80%;
+  width: 80%;
+}
+</style>
