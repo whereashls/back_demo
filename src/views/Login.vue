@@ -1,12 +1,14 @@
 <template>
-  <div class="about">
-     <img class="img" alt="登陆页面" src="@/assets/images/login.jpg">
+  <div class="login">
   </div>
 </template>
 
 <style scoped>
-.img{
-  height: 80%;
-  width: 80%;
+.login{
+  height: 100vw;
+  width: 100vw;
+  background-image: url("../assets/images/login.jpg");
+  background-size:100% 100%;
+  background-repeat:no-repeat;
 }
 </style>
