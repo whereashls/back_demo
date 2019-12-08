@@ -8,6 +8,16 @@
   </div>
 </template>
 
+<script>
+import './assets/styles/reset.css'
+
+export default {
+  components: {
+
+  }
+}
+</script>
+
 <style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
