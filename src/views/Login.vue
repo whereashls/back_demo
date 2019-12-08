@@ -11,12 +11,15 @@
   background-image: url("../assets/images/login.jpg");
   background-size: cover;
   background-repeat:no-repeat;
-  background-position: center;
+  background-position:center;
   overflow: hidden;
+  display:flex;
+  justify-content: center;
+  align-items: center
 }
-.login .box {
-  width: 300px;
-  height: 400px;
-  background-color: white;
+.login .box{
+  width: 200px;
+  height: 200px;
+  background: white;
 }
 </style>
