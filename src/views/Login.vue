@@ -5,6 +5,7 @@
     <!-- 再使用跟form组件配套的子组件 -->
     <!-- 然后 再使用输入框组件-->
     <!-- {{username}}{{password}} -->
+    学生管理系统
         <el-form>
           <!-- 账号 -->
           <el-form-item label="账号">
@@ -58,10 +59,11 @@ export default {
 .login .box{
   /* width: 200px;
   height: 200px; */
+  width:300px;
   background: white;
   padding: 30px;
-  border-radius: 25px;
-  box-shadow: 5px 5px 5px #888888;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px 1px #dedede;
 
 }
 </style>
