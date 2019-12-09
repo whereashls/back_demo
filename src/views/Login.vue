@@ -1,11 +1,7 @@
 <template>
   <div class="login">
     <div class="box">
-    <!-- 首先是第一个组件:el-form -->
-    <!-- 再使用跟form组件配套的子组件 -->
-    <!-- 然后 再使用输入框组件-->
-    <!-- {{username}}{{password}} -->
-    学生管理系统
+    <div>学生管理系统</div>
         <el-form>
           <!-- 账号 -->
           <el-form-item label="账号">
@@ -18,8 +14,7 @@
           </el-form-item>
 
           <el-form-item>
-            <el-button type="primary" @click="onSubmit">提交</el-button>
-            <el-button>取消</el-button>
+            <el-button class="button" type="primary" @click="onSubmit">登录</el-button>
           </el-form-item>
         </el-form>
 
@@ -57,13 +52,15 @@ export default {
   align-items: center
 }
 .login .box{
-  /* width: 200px;
-  height: 200px; */
   width:300px;
   background: white;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0px 0px 8px 1px #dedede;
 
+}
+.login .box .button{
+  width: 100%;
+  margin-top: 20px;
 }
 </style>
