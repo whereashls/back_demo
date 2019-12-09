@@ -1,17 +1,26 @@
 <template>
   <div class="login">
     <div class="box">
+    <!-- 首先是第一个组件:el-form -->
+    <!-- 再使用跟form组件配套的子组件 -->
+    <!-- 然后 再使用输入框组件-->
+    <!-- {{username}}{{password}} -->
+        <el-form>
+          <!-- 账号 -->
+          <el-form-item label="账号">
+            <el-input v-model="username"></el-input>
+          </el-form-item>
 
-      <el-form>
-        <!-- 账号 -->
-        <el-form-item label="账号">
-          <el-input v-model="username"></el-input>
-        </el-form-item>
-        <!-- 密码 -->
-        <el-form-item label="密码">
-          <el-input v-model="password"></el-input>
-        </el-form-item>
-      </el-form>
+          <!-- 密码 -->
+          <el-form-item label="密码">
+            <el-input v-model="password"></el-input>
+          </el-form-item>
+
+          <el-form-item>
+            <el-button type="primary" @click="onSubmit">提交</el-button>
+            <el-button>取消</el-button>
+          </el-form-item>
+        </el-form>
 
     </div>
   </div>
@@ -23,6 +32,11 @@ export default {
     return {
       username: '',
       password: ''
+    }
+  },
+  methods: {
+    onSubmit () {
+      alert('submit!')
     }
   }
 }
@@ -42,7 +56,12 @@ export default {
   align-items: center
 }
 .login .box{
+  /* width: 200px;
+  height: 200px; */
   background: white;
   padding: 30px;
+  border-radius: 25px;
+  box-shadow: 5px 5px 5px #888888;
+
 }
 </style>
