@@ -10,7 +10,7 @@ const routes = [
     name: 'home',
     component: Home,
     redirect: {
-      name: 'Roles'
+      name: 'roles-management'
     },
     children: [
       {
@@ -38,7 +38,7 @@ const routes = [
   {
     path: '*',
     redirect: {
-      name: 'RolesManagement'
+      name: 'roles-management'
     }
   }
 ]
