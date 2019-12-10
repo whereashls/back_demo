@@ -2,16 +2,15 @@
   <div class="login">
     <div class="box">
       <div ref="sb-title">学生管理系统</div>
-
-      <el-form ref="login-form" :model="formData" :rules="formRules">
+      <el-form ref="login-form" :model="formDate" :rules="formRules">
         <!-- 账号 -->
         <el-form-item label="账号" prop="username">
-          <el-input v-model="formData.username"></el-input>
+          <el-input v-model="formDate.username"></el-input>
         </el-form-item>
 
         <!-- 密码 -->
         <el-form-item label="密码" prop="password">
-          <el-input v-model="formData.password" type="password"></el-input>
+          <el-input type="password" v-model="formDate.password"></el-input>
         </el-form-item>
 
         <el-form-item>
@@ -27,7 +26,7 @@
 export default {
   data () {
     return {
-      formData: {
+      formDate: {
         username: '',
         password: ''
       },
@@ -40,7 +39,8 @@ export default {
   methods: {
     onSubmit () {
       const loginForm = this.$refs['login-form']
-
+      // console.log(this.$refs)
+      // console.log(loginForm)
       loginForm.validate().then(() => {
         console.log('通过验证')
       }).catch(() => {
@@ -55,7 +55,7 @@ export default {
 .login{
   height: 100vh;
   width: 100vw;
-  background-image: url("../assets/images/login.jpg");
+  background-image: url("../../assets/images/login.jpg");
   background-size: cover;
   background-repeat:no-repeat;
   background-position:center;
