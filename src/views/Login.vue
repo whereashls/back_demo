@@ -1,22 +1,23 @@
 <template>
   <div class="login">
     <div class="box">
-    <div>学生管理系统</div>
-        <el-form>
-          <!-- 账号 -->
-          <el-form-item label="账号">
-            <el-input v-model="username"></el-input>
-          </el-form-item>
+      <div ref="sb-title">学生管理系统</div>
 
-          <!-- 密码 -->
-          <el-form-item label="密码">
-            <el-input v-model="password"></el-input>
-          </el-form-item>
+      <el-form ref="login-form" :model="formData" :rules="formRules">
+        <!-- 账号 -->
+        <el-form-item label="账号" prop="username">
+          <el-input v-model="formData.username"></el-input>
+        </el-form-item>
 
-          <el-form-item>
-            <el-button class="button" type="primary" @click="onSubmit">登录</el-button>
-          </el-form-item>
-        </el-form>
+        <!-- 密码 -->
+        <el-form-item label="密码" prop="password">
+          <el-input v-model="formData.password" type="password"></el-input>
+        </el-form-item>
+
+        <el-form-item>
+          <el-button class="button" type="primary" @click="onSubmit">登录</el-button>
+        </el-form-item>
+      </el-form>
 
     </div>
   </div>
@@ -26,13 +27,25 @@
 export default {
   data () {
     return {
-      username: '',
-      password: ''
+      formData: {
+        username: '',
+        password: ''
+      },
+      formRules: {
+        username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+        password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
+      }
     }
   },
   methods: {
     onSubmit () {
-      alert('submit!')
+      const loginForm = this.$refs['login-form']
+
+      loginForm.validate().then(() => {
+        console.log('通过验证')
+      }).catch(() => {
+        console.log('验证失败，有数据没填写')
+      })
     }
   }
 }
