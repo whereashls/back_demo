@@ -25,19 +25,17 @@ export default {
 
 <style scoped>
 .header{
+  height: 60px;
   display:flex;
   justify-content:space-between;
-  margin: 20px;
+  align-items: center;
   border-bottom:1px solid rgb(194, 171, 171);
+  padding: 0 20px;
 }
 .header .left{
   font-size:18px;
 }
-.header .right{
-  padding:10px;
-}
 .header .right .hello{
   margin-right:30px;
 }
-
 </style>

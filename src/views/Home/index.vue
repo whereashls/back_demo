@@ -1,20 +1,38 @@
 <template>
-  <div class="home">
+  <div class="app">
     <my-header></my-header>
-    <my-menu></my-menu>
+    <div class="content">
+      <div class="menu"></div>
+      <div class="main"></div>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import MyHeader from '@/components/Header.vue'
-import MyMenu from '@/components/Menu.vue'
 
 export default {
-  name: 'home',
   components: {
-    MyHeader,
-    MyMenu
+    MyHeader
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.app .content {
+  flex-grow: 1;
+  display: flex;
+}
+.app .content .menu {
+  width: 200px;
+  border-right: 1px solid #ccc;
+}
+.app .content .main {
+  flex-grow: 1;
+}
+</style>
