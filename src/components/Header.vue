@@ -28,14 +28,27 @@ export default {
   height: 60px;
   display:flex;
   justify-content:space-between;
+<<<<<<< HEAD
   align-items: center;
   border-bottom:1px solid rgb(194, 171, 171);
   padding: 0 20px;
+=======
+  height: 50px;
+  align-items:center;
+  padding:0 30px;
+  border-bottom: 1px solid #ddd;
+>>>>>>> afcccf338ae27c61df7e0718cefdd99e821a8a8e
 }
 .header .left{
+  font-size:22px;
+}
+<<<<<<< HEAD
+=======
+.header .right{
   font-size:18px;
 }
+>>>>>>> afcccf338ae27c61df7e0718cefdd99e821a8a8e
 .header .right .hello{
-  margin-right:30px;
+  padding-right:30px;
 }
 </style>

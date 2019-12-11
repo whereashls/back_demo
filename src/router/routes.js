@@ -4,7 +4,7 @@ import TeachersManagement from '../views/Home/TeachersManagement'
 import ActivityManagement from '../views/Home/ActivityManagement'
 import SchoolOrganizationManagement from '../views/Home/SchoolOrganizationManagement'
 import UserAccountManagement from '../views/Home/UserAccountManagement'
-import ExaminationManagement from '../views/Home/ExaminationManagement'
+import ExaminationApproval from '../views/Home/ExaminationApproval'
 import StudentCadreManagement from '../views/Home/StudentCadreManagement'
 
 const routes = [
@@ -36,7 +36,8 @@ const routes = [
       {
         path: 'examination-management',
         name: 'examination-management',
-        component: ExaminationManagement
+        component: ExaminationApproval
+
       },
       {
         path: 'studentCadre-management',

@@ -1,15 +1,19 @@
 <template>
   <div class="app">
-    <my-header></my-header>
-    <div class="content">
-      <div class="menu"></div>
-      <div class="main"></div>
-    </div>
+      <my-header class="my-header"></my-header>
+      <div class="content">
+        <my-menu class="menu-left"></my-menu>
+        <div class="main-right">
+        <router-view></router-view>
+        </div>
+      </div>
   </div>
 </template>
 
 <script>
-import MyHeader from '@/components/Header.vue'
+// @ is an alias to /src
+import MyHeader from '@/components/Header'
+import MyMenu from '@/components/Menu'
 
 export default {
   components: {
@@ -18,21 +22,22 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.app {
+<style scoped>
+.app{
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  height: 100vh;
 }
-.app .content {
-  flex-grow: 1;
+.app .content{
+  flex-grow:1;
   display: flex;
 }
-.app .content .menu {
+.app .content .menu-left{
   width: 200px;
-  border-right: 1px solid #ccc;
+  border-right: 1px solid rgb(156, 154, 154);
+  background:#fff;
 }
-.app .content .main {
+.app .content .main-right{
   flex-grow: 1;
 }
 </style>
