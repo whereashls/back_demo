@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="box">
-      <div ref="sb-title">学生管理系统</div>
+      <div ref="sb-title">i活动后台管理系统</div>
       <el-form ref="login-form" :model="formDate" :rules="formRules">
         <!-- 账号 -->
         <el-form-item label="账号" prop="username">

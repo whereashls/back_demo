@@ -36,7 +36,7 @@ export default {
 }
 .app .content .menu-left{
   width: 200px;
-  border-right: 1px solid rgb(156, 154, 154);
+  /* border-right: 1px solid rgb(156, 154, 154); */
   background:#fff;
 }
 .app .content .main-right{

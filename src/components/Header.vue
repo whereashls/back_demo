@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="left">
-      <span class="title">学生管理系统</span>
+      <span class="title">i活动后台管理系统</span>
     </div>
     <div class="right">
       <span class="hello"><i class="el-icon-s-custom"></i>{{name}}</span>
@@ -33,10 +33,10 @@ export default {
   border-bottom: 1px solid #ddd;
 }
 .header .left{
-  font-size:22px;
+  font-size:20px;
 }
 .header .right{
-  font-size:18px;
+  font-size:16px;
 }
 .header .right .hello{
   padding-right:30px;
