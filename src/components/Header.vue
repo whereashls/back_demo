@@ -27,17 +27,19 @@ export default {
 .header{
   display:flex;
   justify-content:space-between;
-  margin: 20px;
-  border-bottom:1px solid rgb(194, 171, 171);
+  height: 50px;
+  align-items:center;
+  padding:0 30px;
+  border-bottom: 1px solid #ddd;
 }
 .header .left{
-  font-size:18px;
+  font-size:22px;
 }
 .header .right{
-  padding:10px;
+  font-size:18px;
 }
 .header .right .hello{
-  margin-right:30px;
+  padding-right:30px;
 }
 
 </style>

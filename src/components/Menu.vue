@@ -1,24 +1,41 @@
 <template>
-  <div class="menu">
-    <el-menu
-    :default-active="currentRouterName" class="el-menu-vertical" @select="handSelect"
-    background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+  <div class="app">
+    <el-menu class="menu">
+      <!-- 教师管理 -->
+      <el-menu-item index="TeachersManagement" class="every">
+        <i class="el-icon-s-custom"></i>
+        <span slot="title">教师管理</span>
+      </el-menu-item>
 
-    <el-menu-item class="manage" index="RolesManagement">
-      <i class="el-icon-s-custom"></i>
-      <span slot="title">用户管理</span>
-    </el-menu-item>
+      <!-- 活动管理 -->
+      <el-menu-item index="ActivityManagement" class="every">
+        <i class="el-icon-magic-stick"></i>
+        <span slot="title">活动管理</span>
+      </el-menu-item>
 
-    <el-menu-item class="manage"  index="OrganizationManagement">
-      <i class="el-icon-s-custom"></i>
-      <span slot="title">组织管理</span>
-    </el-menu-item>
+      <!-- 学校组织管理 -->
+      <el-menu-item index="SchoolOrganizationManagement" class="every">
+        <i class="el-icon-files"></i>
+        <span slot="title">学校组织管理</span>
+      </el-menu-item>
 
-     <el-menu-item class="manage" index="CategoriesManagement">
-      <i class="el-icon-s-custom"></i>
-      <span slot="title">活动分类管理</span>
-    </el-menu-item>
+      <!-- 用户帐号管理 -->
+      <el-menu-item index="UserAccountManagement" class="every">
+        <i class="el-icon-user"></i>
+        <span slot="title">用户帐号管理</span>
+      </el-menu-item>
 
+      <!-- 审批活动 -->
+      <el-menu-item index="ExaminationApproval" class="every">
+        <i class="el-icon-receiving"></i>
+        <span slot="title">审批活动</span>
+      </el-menu-item>
+
+      <!-- 学生干部管理 -->
+      <el-menu-item index="StudentCadreManagement" class="every">
+        <i class="el-icon-user-solid"></i>
+        <span slot="title">学生干部管理</span>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>
@@ -44,14 +61,11 @@ export default {
 <style scoped>
 .menu{
   width: 200px;
-  border-right: 1px solid #ddd;
+  background-color:#ddd;
 }
-.menu .el-menu-vertical{
-  height: 100%;
-  border-top:1px solid rgb(245, 242, 242);
+.menu .every{
+ border-bottom: 1px solid black;
+ border-right: 1px solid black;
 }
-.menu .el-menu-vertical .manage{
-  height: 100%;
-  border-top:1px solid rgb(245, 242, 242);
-}
+
 </style>
