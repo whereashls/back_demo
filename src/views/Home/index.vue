@@ -16,10 +16,8 @@ import MyHeader from '@/components/Header'
 import MyMenu from '@/components/Menu'
 
 export default {
-  name: 'home',
   components: {
-    MyHeader,
-    MyMenu
+    MyHeader
   }
 }
 </script>
