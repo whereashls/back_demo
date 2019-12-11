@@ -7,37 +7,37 @@
       text-color="#fff"
       active-text-color="#ffd04b">
       <!-- 教师管理 -->
-      <el-menu-item index="TeachersManagement" class="every">
+      <el-menu-item index="teachers-management" class="every">
         <i class="el-icon-s-custom"></i>
         <span slot="title">教师管理</span>
       </el-menu-item>
 
       <!-- 活动管理 -->
-      <el-menu-item index="ActivityManagement">
+      <el-menu-item index="activity-management">
         <i class="el-icon-magic-stick"></i>
         <span slot="title">活动管理</span>
       </el-menu-item>
 
       <!-- 学校组织管理 -->
-      <el-menu-item index="SchoolOrganizationManagement">
+      <el-menu-item index="schoolOrganization-management">
         <i class="el-icon-files"></i>
         <span slot="title">学校组织管理</span>
       </el-menu-item>
 
       <!-- 用户帐号管理 -->
-      <el-menu-item index="UserAccountManagement">
+      <el-menu-item index="userAccount-management">
         <i class="el-icon-user"></i>
         <span slot="title">用户帐号管理</span>
       </el-menu-item>
 
       <!-- 审批活动 -->
-      <el-menu-item index="ExaminationApproval">
+      <el-menu-item index="examination-management">
         <i class="el-icon-receiving"></i>
         <span slot="title">审批活动</span>
       </el-menu-item>
 
       <!-- 学生干部管理 -->
-      <el-menu-item index="StudentCadreManagement">
+      <el-menu-item index="studentCadre-management">
         <i class="el-icon-user-solid"></i>
         <span slot="title">学生干部管理</span>
       </el-menu-item>

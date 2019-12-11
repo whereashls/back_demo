@@ -4,7 +4,7 @@
       <div class="content">
         <my-menu class="menu-left"></my-menu>
         <div class="main-right">
-        <router-view></router-view>
+         <router-view></router-view>
         </div>
       </div>
   </div>
@@ -17,7 +17,8 @@ import MyMenu from '@/components/Menu'
 
 export default {
   components: {
-    MyHeader
+    MyHeader,
+    MyMenu
   }
 }
 </script>
