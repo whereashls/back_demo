@@ -49,7 +49,8 @@ export default {
 }
 .page .content .content-header{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-bottom:20px;
+  align-items: center;     /* 垂直居中 */
 }
 </style>
