@@ -12,6 +12,9 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home,
+    redirect: {
+      name: 'teachers-management'
+    },
     children: [
       {
         path: 'teachers-management',
@@ -50,6 +53,12 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login
+  },
+  {
+    path: '*',
+    redirect: {
+      name: 'teachers-management'
+    }
   }
 ]
 export default routes

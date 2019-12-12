@@ -49,7 +49,7 @@
 export default {
   computed: {
     currentRouterName () {
-      return this.$router.name
+      return this.$route.name
     }
   },
   methods: {
