@@ -35,3 +35,21 @@ export default {
   // }
 }
 </script>
+
+<style scoped>
+.page{
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.page .content{
+  padding:15px;
+  flex-grow: 1;
+  background: rgba(243, 240, 240, 0.568);
+}
+.page .content .content-header{
+  display: flex;
+  justify-content: space-around;
+  margin-bottom:20px;
+}
+</style>
