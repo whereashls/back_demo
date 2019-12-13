@@ -7,7 +7,7 @@
       </div>
 
       <el-table :data="list.data" border>
-        <el-table-column prop="d_name" label="系别名称"></el-table-column>
+        <el-table-column prop="d_name" label="教师名称"></el-table-column>
         <el-table-column label="操作" width="150">
           <template slot-scope="scope">
             <el-button size="mini" @click="update(scope.row.id)">编辑</el-button>
@@ -51,6 +51,6 @@ export default {
   display: flex;
   justify-content: space-between;
   margin-bottom:20px;
-  align-items: center;     /* 垂直居中 */
+  align-items: center; /* 垂直居中 */
 }
 </style>
