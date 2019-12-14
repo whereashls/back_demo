@@ -23,11 +23,6 @@
 </template>
 
 <script>
-// import { toLogin } from '@/admin.js'
-// import { toLogin } from './admin.js'
-// import { toLogin } from '../admin.js'
-// import { toLogin } from './api/admin.js'
-// import { toLogin } from '/api/admin.js'
 import { toLogin } from '@/api/admin.js'
 
 export default {
@@ -50,10 +45,10 @@ export default {
       // console.log(loginForm)
       loginForm.validate().then(() => {
         console.log('通过验证')
-
+        // console.log(res)
         toLogin({
-          user_id: this.user_id,
-          password: this.password
+          user_id: this.formDate.username,
+          password: this.formDate.password
         }).then(res => {
           console.log(res)
         })
