@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import { toLogin } from './api/admin'
+
 export default {
   data () {
     return {

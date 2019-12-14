@@ -3,7 +3,7 @@
     <div class="content">
       <div class="content-header">
         <span>共{{list.total}}条结果</span>
-        <el-button  size="medium" type="primary">新增</el-button>
+        <el-button  :visible.sync="dislogVisible" @click="add" size="medium" type="primary">新增</el-button>
       </div>
 
       <el-table :data="list.data" border>
@@ -16,6 +16,11 @@
         </el-table-column>
       </el-table>
     </div>
+
+    <!-- 这是弹窗 -->
+    <el-dialog :visible.sync="dislogVisible" center title="新增学生干部">
+      <div>这是内容</div>
+    </el-dialog>
   </div>
 </template>
 
@@ -27,12 +32,17 @@ export default {
         data: [],
         tatol: 0,
         loading: false
-      }
+      },
+      dislogVisible: true// 是否显示弹窗
+
+    }
+  },
+  methods: {
+    // 新增
+    add () {
+      this.dialogVisible = false
     }
   }
-  // created () {
-  //   this.getList()
-  // }
 }
 </script>
 
