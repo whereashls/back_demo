@@ -23,7 +23,12 @@
 </template>
 
 <script>
-import { toLogin } from './api/admin'
+// import { toLogin } from '@/admin.js'
+// import { toLogin } from './admin.js'
+// import { toLogin } from '../admin.js'
+// import { toLogin } from './api/admin.js'
+// import { toLogin } from '/api/admin.js'
+import { toLogin } from '@/api/admin.js'
 
 export default {
   data () {
@@ -45,8 +50,13 @@ export default {
       // console.log(loginForm)
       loginForm.validate().then(() => {
         console.log('通过验证')
-      }).catch(() => {
-        console.log('验证失败，有数据没填写')
+
+        toLogin({
+          user_id: this.user_id,
+          password: this.password
+        }).then(res => {
+          console.log(res)
+        })
       })
     }
   }
