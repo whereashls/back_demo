@@ -5,12 +5,12 @@
       <el-form ref="login-form" :model="formDate" :rules="formRules">
         <!-- 账号 -->
         <el-form-item label="账号" prop="username">
-          <el-input v-model="formDate.username"></el-input>
+          <el-input v-model="formDate.username" placeholder="请输入账号"></el-input>
         </el-form-item>
 
         <!-- 密码 -->
         <el-form-item label="密码" prop="password">
-          <el-input type="password" v-model="formDate.password"></el-input>
+          <el-input type="password" v-model="formDate.password" placeholder="请输入密码"></el-input>
         </el-form-item>
 
         <el-form-item>
@@ -51,6 +51,37 @@ export default {
           password: this.formDate.password
         }).then(res => {
           console.log(res)
+          // 弹框提示
+          this.$message.success('登录成功')
+          console.log('token:' + res.token)
+          if (res.code === 1) {
+            this.$message.success('登录成功')
+            let token = res.token
+            // this.$store.commit('set_token', token['Authentication-Token'])
+            // this.$store.commit('set_token', token)
+            this.$router.push('/')
+            // localStorage.setItem('token', token)
+            sessionStorage.setItem('token', token)
+          } else {
+            this.$message.success('登录失败')
+          }
+
+          // 定义一个变量保存返回的token
+          // let token = res.token
+          // 根据store中set_token方法将token保存至localStorage/sessionStorage中
+          // data["Authentication-Token"]，获取token的value值
+          // this代表当前界面/当前实例
+
+          // this.$router.push('/')
+
+          // vuex中mutations的token保存，也可以是localStorage或者是存在sessionStorage
+
+          // if (store.state.token) {
+          //   this.$router.push('/')
+          //   console.log(store.state.token)
+          // } else {
+          //   this.$router.replace('/login')
+          // }
         })
       })
     }
