@@ -39,54 +39,53 @@ export default {
     }
   },
   methods: {
-    onSubmit () {
+    // 提交表单
+    async onSubmit () {
+      // 获取表单组件实例
       const loginForm = this.$refs['login-form']
-      // console.log(this.$refs)
-      // console.log(loginForm)
-      loginForm.validate().then(() => {
-        console.log('通过验证')
-        // console.log(res)
-        toLogin({
-          user_id: this.formDate.username,
-          password: this.formDate.password
-        }).then(res => {
-          console.log('res是后台返回的数据:')
-          console.log(res)
-          // 弹框提示
-          this.$message.success('登录成功')
-          console.log('token:' + res.token)
-          if (res.code === 1) {
-            this.$message.success('登录成功')
-            let token = res.token
-            // this.$store.commit('set_token', token['Authentication-Token'])
-            // this.$store.commit('set_token', token)
-            this.$router.push('/')
-            // localStorage.setItem('token', token)
-            sessionStorage.setItem('token', token)
-            sessionStorage.setItem('user_id', res.user_id)
-          } else {
-            this.$message.success('登录失败')
-          }
+      // 验证表单内容
 
-          // 定义一个变量保存返回的token
-          // let token = res.token
-          // 根据store中set_token方法将token保存至localStorage/sessionStorage中
-          // data["Authentication-Token"]，获取token的value值
-          // this代表当前界面/当前实例
-
-          // this.$router.push('/')
-
-          // vuex中mutations的token保存，也可以是localStorage或者是存在sessionStorage
-
-          // if (store.state.token) {
-          //   this.$router.push('/')
-          //   console.log(store.state.token)
-          // } else {
-          //   this.$router.replace('/login')
-          // }
+      const validate = await new Promise(resolve => {
+        loginForm.validate().then(() => {
+          resolve(true)
+        }).catch(() => {
+          resolve(false)
         })
       })
+
+      // 如果验证不通过，则return
+      if (validate === false) return false
+
+      // 发送请求给接口
+      toLogin({
+        user_id: this.formDate.username,
+        password: this.formDate.password
+      }).then(res => {
+        console.log('res是后台返回的数据:')
+        console.log(res)
+
+        if (res.code === 1) {
+          this.$message.success('登录成功')
+          // 登录成功后存储数据进入store
+          this.$store.commit('saveUserInfo', res)
+
+          // 弹框提示登录成功
+          this.$message.success('登录成功')
+
+          // 跳转页面
+          this.$router.replace({
+            name: 'home'
+          })
+        } else {
+          this.$message.error('登录失败')
+        }
+      }).catch(err => {
+        console.log(err)
+      }).finally(() => {
+
+      })
     }
+
   }
 }
 </script>

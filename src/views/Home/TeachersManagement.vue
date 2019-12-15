@@ -72,7 +72,9 @@ export default {
     },
     // 新增
     add () {
-      this.$Dialog({
+      // this.$confirm
+      // this.$dialog
+      this.$confirm({
         name: 'Teacher',
         options: {
           title: '新增教师'
