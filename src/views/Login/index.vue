@@ -50,6 +50,7 @@ export default {
           user_id: this.formDate.username,
           password: this.formDate.password
         }).then(res => {
+          console.log('res是后台返回的数据:')
           console.log(res)
           // 弹框提示
           this.$message.success('登录成功')
@@ -62,6 +63,7 @@ export default {
             this.$router.push('/')
             // localStorage.setItem('token', token)
             sessionStorage.setItem('token', token)
+            sessionStorage.setItem('user_id', res.user_id)
           } else {
             this.$message.success('登录失败')
           }

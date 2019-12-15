@@ -46,6 +46,8 @@
 </template>
 
 <script>
+// getTeacherList
+// import { getTeacherList } from '@/api/teacher.js'
 export default {
   computed: {
     currentRouterName () {
@@ -61,7 +63,9 @@ export default {
         name: key
       })
     }
+
   }
+
 }
 </script>
 

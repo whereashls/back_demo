@@ -6,6 +6,10 @@ const axios = Axios.create({
 
 // 请求拦截器
 axios.interceptors.request.use(config => {
+  let url = config.url.split('/')
+  if (url[url.length] !== 'login') {
+    config.headers.common['Authorization'] = sessionStorage.getItem('token')
+  }
   return config
 }, error => {
   return Promise.reject(error)

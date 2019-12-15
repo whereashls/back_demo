@@ -6,6 +6,7 @@ import SchoolOrganizationManagement from '../views/Home/SchoolOrganizationManage
 import UserAccountManagement from '../views/Home/UserAccountManagement'
 import ExaminationApproval from '../views/Home/ExaminationApproval'
 import StudentCadreManagement from '../views/Home/StudentCadreManagement'
+import MyError from '../views/errorPage/404'
 
 const routes = [
   {
@@ -46,6 +47,11 @@ const routes = [
         path: 'studentCadre-management',
         name: 'studentCadre-management',
         component: StudentCadreManagement
+      },
+      {
+        path: 'error',
+        name: 'error',
+        component: MyError
       }
     ]
   },
@@ -57,7 +63,8 @@ const routes = [
   {
     path: '*',
     redirect: {
-      name: 'teachers-management'
+      // name: 'teachers-management'
+      name: 'error'
     }
   }
 ]

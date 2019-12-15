@@ -18,7 +18,13 @@ export default {
     }
   },
   methods: {
-    exit () {}
+    exit () {
+      console.log('exit')
+      // sessionStorage.removeItem('token', null)
+      sessionStorage.removeItem('token')
+      console.log(sessionStorage.getItem('token'))
+      this.$router.push('/login')
+    }
   }
 }
 </script>

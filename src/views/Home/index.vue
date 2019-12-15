@@ -35,7 +35,7 @@ export default {
   display: flex;
 }
 .app .content .menu-left{
-  width: 200px;
+  width: 200PX;
   /* border-right: 1px solid rgb(156, 154, 154); */
   background:#fff;
 }
