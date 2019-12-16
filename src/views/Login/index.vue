@@ -65,27 +65,30 @@ export default {
         console.log(res)
 
         if (res.code === 1) {
-          this.$message.success('登录成功')
+          // console.log('登录成功')
+
           // 登录成功后存储数据进入store
           this.$store.commit('saveUserInfo', res)
 
           // 弹框提示登录成功
           this.$message.success('登录成功')
+          // console.log(saveUserInfo)
 
           // 跳转页面
-          this.$router.replace({
-            name: 'home'
-          })
-        } else {
-          this.$message.error('登录失败')
-        }
-      }).catch(err => {
-        console.log(err)
-      }).finally(() => {
+          //     this.$router.replace({
+          //       name: 'home'
+          //     })
+          //   } else {
+          //     this.$message.error('登录失败')
+          //   }
+          // }).catch(err => {
+          //   console.log(err)
+          // }).finally(() => {
 
+          // })
+        }
       })
     }
-
   }
 }
 </script>

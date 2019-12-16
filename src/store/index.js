@@ -9,11 +9,11 @@ export default new Vuex.Store({
   },
   mutations: {
     // 存储用户信息
-    saveUserInfo () {
-
+    saveUserInfo (state, user) {
+      console.log(user)
     },
     // 移除用户信息
-    removeUserInfo () {}
+    removeUserInfo (state) {}
   }
   // actions: {
   // },

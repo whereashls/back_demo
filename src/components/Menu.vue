@@ -52,7 +52,7 @@ export default {
   computed: {
     currentRouterName () {
       // console.log('后台获取token' + this.$store.getters.token)
-      console.log('后台获取token' + sessionStorage.getItem('token'))
+      console.log('后台获取token' + localStorage.getItem('token'))
       return this.$route.name
     }
   },

@@ -21,8 +21,9 @@ export default {
     exit () {
       console.log('exit')
       // sessionStorage.removeItem('token', null)
-      sessionStorage.removeItem('token')
-      console.log(sessionStorage.getItem('token'))
+      // sessionStorage.removeItem('token')
+      localStorage.removeItem('token')
+      console.log(localStorage.getItem('token'))
       this.$router.push('/login')
     }
   }

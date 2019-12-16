@@ -58,7 +58,7 @@ export default {
         page_size: 10, // 一页包含多少条用户信息，默认为10
 
         // 查询条件
-        user_id: sessionStorage.getItem('user_id'),
+        user_id: localStorage.getItem('user_id'),
         role_id: 3 // 根据身份id  用户类型是固定的
       // 1 学生 2 学生干部 3 指导老师 4 管理员
       }).then((res) => {
