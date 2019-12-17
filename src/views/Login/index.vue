@@ -75,11 +75,11 @@ export default {
           // console.log(saveUserInfo)
 
           // 跳转页面
-          //     this.$router.replace({
-          //       name: 'home'
-          //     })
-          //   } else {
-          //     this.$message.error('登录失败')
+          this.$router.replace({
+            name: 'home'
+          })
+        } else {
+          this.$message.error('登录失败')
           //   }
           // }).catch(err => {
           //   console.log(err)

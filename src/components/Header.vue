@@ -14,17 +14,23 @@
 export default {
   data () {
     return {
-      name: 'Admin'
+      name: ''
     }
+  },
+  // created生命周期
+  // 这个组件被创建的时候，就会设置 this.name
+  // 然后放到html 上面显示
+  // this.$store.state,获取store里面的state的
+  created () {
+    this.name = this.$store.state.user.user_name
+    console.log(this.$store.state)
   },
   methods: {
     exit () {
-      console.log('exit')
-      // sessionStorage.removeItem('token', null)
-      // sessionStorage.removeItem('token')
-      localStorage.removeItem('token')
-      console.log(localStorage.getItem('token'))
-      this.$router.push('/login')
+      this.$store.commit('removeUserInfo')
+      this.$router.replace({
+        name: 'login'
+      })
     }
   }
 }

@@ -61,6 +61,9 @@ export default {
     }
   },
   created () {
+    this.$dialog({
+      name: ''
+    })
     // getDepartmentList().then(res => {
     //   this.departmentOptions = res.data.list
     // })

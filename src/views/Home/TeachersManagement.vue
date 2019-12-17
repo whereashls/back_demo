@@ -94,6 +94,10 @@ export default {
       this.list.page = current
       this.getList()
     }
+  },
+  // 修改
+  upload (item) {
+    this.$dialog()
   }
   // created () {
   //   this.getList()

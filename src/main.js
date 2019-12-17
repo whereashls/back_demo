@@ -5,6 +5,8 @@ import store from './store'
 
 import './plugins/element-ui'
 
+import './components/Dialog'
+
 Vue.config.productionTip = false
 
 new Vue({
