@@ -1,6 +1,23 @@
-// import Vue from 'vue'
-// import Dialog from './index.vue'
+import Vue from 'vue'
+import Dialog from './index.vue'
 
+Vue.prototype.$dialog = () => {
+  const id = 'custom-dialog'
+  const div = document.createElement('div')
+  div.id = id
+  document.body.appendChild(div)
+
+  // 注册组件
+  const DialogComponent = Vue.extend(Dialog)
+
+  // 实例化
+  const DialogInstant = new DialogComponent()
+
+  // 挂载
+  DialogInstant.$mount(`#${id}`)
+
+  DialogInstant.show()
+}
 // Vue.prototype.$dialog = (options) => {
 //   // 组件构造器
 //   const DialogComponent = Vue.extend(Dialog)

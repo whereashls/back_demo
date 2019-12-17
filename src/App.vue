@@ -8,8 +8,11 @@
 import './assets/styles/reset.css'
 
 export default {
-  components: {
+  // components: {
 
+  // }
+  created () {
+    this.$dialog()
   }
 }
 </script>

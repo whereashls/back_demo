@@ -5,7 +5,8 @@ import store from './store'
 
 import './plugins/element-ui'
 
-import './components/Dialog'
+// 注册的方法
+import './components/Dialog/register.js'
 
 Vue.config.productionTip = false
 
