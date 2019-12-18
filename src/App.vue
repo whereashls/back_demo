@@ -11,8 +11,6 @@ export default {
   // components: {
 
   // }
-  created () {
-    this.$dialog()
-  }
+
 }
 </script>

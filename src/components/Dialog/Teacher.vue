@@ -26,7 +26,8 @@
 </template>
 
 <script>
-import { createTeacher, updateTeacher, getTeacherDetail } from '@/api/teacher'
+// import { createTeacher, updateTeacher, getTeacherDetail } from '@/api/teacher'
+import { createTeacher, updateTeacher } from '@/api/teacher'
 // import { getDepartmentList } from '@/api/department'
 
 export default {
@@ -38,7 +39,8 @@ export default {
         t_id: '',
         s_name: '',
         t_sex: '',
-        d_id: ''
+        d_id: '',
+        visible: false
       },
       formRules: {
         s_name: [
@@ -61,20 +63,18 @@ export default {
     }
   },
   created () {
-    this.$dialog({
-      name: ''
-    })
+    this.$dialog()
     // getDepartmentList().then(res => {
     //   this.departmentOptions = res.data.list
     // })
-    if (this.type === 2) {
-      getTeacherDetail(this.id).then(res => {
-        this.formData.t_name = res.data.t_name
-        this.formData.t_id = res.data.t_id
-        this.formData.t_sex = res.data.t_sex
-        this.formData.d_id = res.data.d_id || ''
-      })
-    }
+    // if (this.type === 2) {
+    //   getTeacherDetail(this.id).then(res => {
+    //     this.formData.t_name = res.data.t_name
+    //     this.formData.t_id = res.data.t_id
+    //     this.formData.t_sex = res.data.t_sex
+    //     this.formData.d_id = res.data.d_id || ''
+    //   })
+    // }
   },
   methods: {
     submit () {
@@ -100,6 +100,12 @@ export default {
           this.loading = false
         })
       }).catch(() => {})
+    },
+    show () {
+      this.visible = true
+    },
+    hide () {
+      this.visible = false
     }
   }
 }

@@ -1,17 +1,30 @@
 import Vue from 'vue'
 import Dialog from './index.vue'
 
-Vue.prototype.$dialog = () => {
+// Vue.prototype.$dialog = (obj) => {
+//   console.log(obj)// {title:'新增'}
+//   // obj.title
+
+Vue.prototype.$dialog = obj => {
+  // console.log(obj)// {title:'新增'}
+  // obj.title
+
   const id = 'custom-dialog'
   const div = document.createElement('div')
   div.id = id
   document.body.appendChild(div)
 
+  // const title = obj.title
+
   // 注册组件
   const DialogComponent = Vue.extend(Dialog)
 
   // 实例化
-  const DialogInstant = new DialogComponent()
+  const DialogInstant = new DialogComponent({
+    propsData: {
+      title: obj.title
+    }
+  })
 
   // 挂载
   DialogInstant.$mount(`#${id}`)

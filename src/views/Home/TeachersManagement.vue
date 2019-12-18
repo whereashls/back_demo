@@ -17,7 +17,7 @@
         </el-table-column>
       </el-table>
 
-          <el-pagination
+      <el-pagination
         class="pagination"
         background
         layout="prev, pager, next"
@@ -59,8 +59,7 @@ export default {
 
         // 查询条件
         user_id: localStorage.getItem('user_id'),
-        role_id: 3 // 根据身份id  用户类型是固定的
-      // 1 学生 2 学生干部 3 指导老师 4 管理员
+        role_id: 3 // 根据身份id  用户类型是固定的  1 学生 2 学生干部 3 指导老师 4 管理员
       }).then((res) => {
         console.log(res)
         console.log(res.rows)
@@ -72,23 +71,29 @@ export default {
     },
     // 新增
     add () {
-      // this.$confirm
-      // this.$dialog
-      this.$confirm({
-        name: 'Teacher',
-        options: {
-          title: '新增教师'
-        },
-        params: {
-          type: 1
-        },
-        methods: {
-          done: () => {
-            this.getList()
-          }
-        }
+      this.$dialog({
+        title: '新增教师'
       })
     },
+    // add () {
+    //   // this.$confirm
+    //   // this.$dialog
+    //   this.$confirm({
+    //     name: 'Teacher',
+    //     options: {
+    //       title: '新增教师'
+    //     },
+    //     params: {
+    //       type: 1
+    //     },
+    //     methods: {
+    //       done: () => {
+    //         this.getList()
+    //       }
+    //     }
+    //   })
+    // },
+
     // 选择页数
     pageChange (current) {
       this.list.page = current
