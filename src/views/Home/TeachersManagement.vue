@@ -48,6 +48,12 @@ export default {
     this.getList()
   },
   methods: {
+    sayHello () {
+      console.log('Hello')
+    },
+    sayWorld () {
+      console.log('World')
+    },
     getList () {
       if (this.list.loading) return false
       this.list.loading = true
@@ -72,7 +78,14 @@ export default {
     // 新增
     add () {
       this.$dialog({
-        title: '新增教师'
+        // 我们想把这些信息传入弹窗内容里面 定义成一个对象---
+        name: 'Teacher',
+        title: '新增教师',
+        propsData: {
+          teacherName: '黄老师',
+          age: 18,
+          sex: 'Female'
+        }
       })
     },
     // add () {

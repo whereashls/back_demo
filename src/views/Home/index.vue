@@ -41,5 +41,6 @@ export default {
 }
 .app .content .main-right{
   flex-grow: 1;
+  width: 1px;
 }
 </style>

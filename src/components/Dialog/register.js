@@ -1,10 +1,6 @@
 import Vue from 'vue'
 import Dialog from './index.vue'
 
-// Vue.prototype.$dialog = (obj) => {
-//   console.log(obj)// {title:'新增'}
-//   // obj.title
-
 Vue.prototype.$dialog = obj => {
   // console.log(obj)// {title:'新增'}
   // obj.title
@@ -21,15 +17,23 @@ Vue.prototype.$dialog = obj => {
 
   // 实例化
   const DialogInstant = new DialogComponent({
+    // 传递数据时用propsData进行传递
     propsData: {
-      title: obj.title
+      name: obj.name,
+      title: obj.title,
+      // 注册器接收 设置一个默认值
+      // 如果调用的时候不传递参数的话，就默认是个空对象
+      contentPropsData: obj.propsData || {}
     }
   })
 
-  // 挂载
+  // 挂载进入HTML
   DialogInstant.$mount(`#${id}`)
 
-  DialogInstant.show()
+  // 显示
+  DialogInstant.show({
+    methods: obj.methods
+  })
 }
 // Vue.prototype.$dialog = (options) => {
 //   // 组件构造器
