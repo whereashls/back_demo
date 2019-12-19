@@ -8,7 +8,8 @@ const axios = Axios.create({
 axios.interceptors.request.use(config => {
   let url = config.url.split('/')
   if (url[url.length] !== 'login') {
-    config.headers.common['Authorization'] = localStorage.getItem('token')
+    // config.headers.common['Authorization'] = localStorage.getItem('token')
+    config.headers.common['Authorization'] = this.store.$state.getItem('token')
   }
   return config
 }, error => {

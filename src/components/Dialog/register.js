@@ -31,6 +31,7 @@ Vue.prototype.$dialog = obj => {
   DialogInstant.$mount(`#${id}`)
 
   // 显示
+  console.log(obj.methods)
   DialogInstant.show({
     methods: obj.methods
   })

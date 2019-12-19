@@ -85,6 +85,14 @@ export default {
           teacherName: '黄老师',
           age: 18,
           sex: 'Female'
+        },
+        methods: {
+          sayHello () {
+            console.log('Hello')
+          },
+          sayWorld () {
+            console.log('World')
+          }
         }
       })
     },

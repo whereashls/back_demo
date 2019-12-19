@@ -14,6 +14,9 @@ export default {
     submit () {
       this.$emit('sayHello')
       this.$emit('sayWorld')
+    },
+    close () {
+      this.$emit('hide')
     }
   }
 }

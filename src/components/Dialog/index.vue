@@ -1,6 +1,6 @@
 <template>
   <el-dialog :title="title" :visible.sync="visible" @close="closed" :append-to-body="true">
-     <components :is="name" v-bind="contentPropsData"></components>
+     <components ref="content" :is="name" v-bind="contentPropsData" @hide='hide'></components>
   </el-dialog>
 </template>
 
@@ -26,15 +26,29 @@ export default {
       type: String,
       required: true
     },
-    // 内容传递参数
+    // 内容传递的参数
     contentPropsData: Object
   },
   methods: {
     show ({ methods }) {
       this.visible = true
-      for (let key in methods) {
-        console.log(key)
-      }
+
+      console.log(this.$refs.content)
+      // const contentComponent = this.$refs.content
+      // console.log(contentComponent)
+
+      // $nextTick里面是在下一次事件循环的时候执行的
+      // 在下一次事件循环的时候，内容组件已经被挂载了
+      this.$nextTick(() => {
+        // console.log(this.$refs.content)
+        for (let key in methods) {
+          // 用$on 把 方法绑定进去
+          this.$refs.content.$on(key, methods[key])
+        }
+      })
+      // for (let key in methods) {
+      //   console.log(key)
+      // }
     },
     hide () {
       this.visible = false
