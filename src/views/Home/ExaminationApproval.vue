@@ -1,17 +1,22 @@
 <template>
   <div class="page">
-    <div class="content">
-      <div class="content-header">
-        <span>共{{list.total}}条结果</span>
-        <el-button  size="medium" type="primary">新增</el-button>
-      </div>
-
-      <el-table :data="list.data" border>
-        <el-table-column prop="d_name" label="审批活动"></el-table-column>
-        <el-table-column label="操作" width="150">
+    <div class="content-header">
+      <span>共 {{list.data.length}} 条结果</span>
+    </div>
+    <div class="content-body">
+      <el-table v-loading.box="list.loading" :data="list.data" border height="100%">
+        <el-table-column prop="activity_title" label="活动标题"></el-table-column>
+        <el-table-column prop="activity_introduce" label="活动介绍"></el-table-column>
+        <el-table-column prop="category.category_name" label="活动类别"></el-table-column>
+        <el-table-column label="是否通过审批">
           <template slot-scope="scope">
-            <el-button size="mini" @click="update(scope.row.id)">编辑</el-button>
-            <el-button size="mini" type="danger" @click="remove(scope.row.id)">删除</el-button>
+            <span v-if="scope.row.passed">是</span>
+            <span v-else>否</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="操作">
+          <template slot-scope="scope">
+            <el-button @click="views(scope.row)" size="mini" type="primary">查看</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -20,37 +25,70 @@
 </template>
 
 <script>
+import { getActivities } from '@/api/activities.js'
+
 export default {
   data () {
     return {
       list: {
         data: [],
-        tatol: 0,
         loading: false
       }
     }
+  },
+  created () {
+    this.getList()
+  },
+  methods: {
+    // 获取列表
+    getList () {
+      if (this.list.loading) return false
+      this.list.loading = true
+      getActivities({
+        all: true
+      }).then(res => {
+        console.log(res)
+        this.list.data = res.teacherActivities
+      }).finally(() => {
+        this.list.loading = false
+      })
+    },
+    // 查看
+    views (item) {
+      this.$dialog({
+        title: '审批活动',
+        name: 'Examination',
+        propsData: {
+          id: item.activity_id
+        },
+        methods: {
+          done: () => {
+            this.getList()
+          }
+        }
+      })
+    }
   }
-  // created () {
-  //   this.getList()
-  // }
 }
 </script>
 
 <style scoped>
 .page{
-  min-height: 100%;
+  padding: 15px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-}
-.page .content{
-  padding:15px;
-  flex-grow: 1;
   background: rgba(243, 240, 240, 0.568);
 }
-.page .content .content-header{
+.page .content-header {
   display: flex;
   justify-content: space-between;
   margin-bottom:20px;
-  align-items: center; /* 垂直居中 */
+  align-items: center;
+}
+.page .content-body {
+  flex-grow: 1;
+  height: 1px;
+  overflow: hidden;
 }
 </style>

@@ -3,7 +3,7 @@
     <div class="content">
       <div class="content-header">
         <span>共{{list.total}}条结果</span>
-        <el-button  size="medium" type="primary">新增</el-button>
+        <el-button @click="add" size="medium" type="primary">新增</el-button>
       </div>
 
       <el-table :data="list.data" border>
@@ -29,10 +29,12 @@ export default {
         loading: false
       }
     }
+  },
+  methods: {
+    add () {
+
+    }
   }
-  // created () {
-  //   this.getList()
-  // }
 }
 </script>
 

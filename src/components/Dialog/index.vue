@@ -32,8 +32,6 @@ export default {
   methods: {
     show ({ methods }) {
       this.visible = true
-
-      console.log(this.$refs.content)
       // $nextTick里面是在下一次事件循环的时候执行的
       // 在下一次事件循环的时候，内容组件已经被挂载了
       this.$nextTick(() => {
@@ -43,9 +41,6 @@ export default {
           this.$refs.content.$on(key, methods[key])
         }
       })
-      // for (let key in methods) {
-      //   console.log(key)
-      // }
     },
     hide () {
       this.visible = false

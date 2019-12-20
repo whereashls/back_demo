@@ -4,7 +4,7 @@
       <div class="content">
         <my-menu class="menu-left"></my-menu>
         <div class="main-right">
-         <router-view></router-view>
+          <router-view></router-view>
         </div>
       </div>
   </div>
@@ -26,21 +26,24 @@ export default {
 
 <style scoped>
 .app{
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
-.app .content{
-  flex-grow:1;
+.app .content {
+  flex-grow: 1;
   display: flex;
+  height: 1px;
 }
-.app .content .menu-left{
-  width: 200PX;
-  /* border-right: 1px solid rgb(156, 154, 154); */
+.app .content .menu-left {
+  width: 200px;
+  min-width: 200px;
   background:#fff;
 }
-.app .content .main-right{
-  flex-grow: 1;
+.app .content .main-right {
   width: 1px;
+  height: 100%;
+  flex-grow: 1;
 }
 </style>

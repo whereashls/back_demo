@@ -38,15 +38,17 @@ export default {
 
 <style scoped>
 .header{
-  height: 60px;
+  height: 50px;
+  min-height: 50px;
   display:flex;
   justify-content:space-between;
   align-items: center;
   border-bottom:1px solid rgb(194, 171, 171);
   padding: 0 20px;
 }
-.header .left{
-  font-size:20px;
+.header .left .title {
+  font-size: 18px;
+  font-weight: bold;
 }
 .header .right .hello{
   padding-right:30px;

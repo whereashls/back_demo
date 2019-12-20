@@ -1,16 +1,8 @@
 <template>
-  <div id="app">
-    <router-view/>
-  </div>
+  <router-view/>
 </template>
 
 <script>
 import './assets/styles/reset.css'
-
-export default {
-  // components: {
-
-  // }
-
-}
+export default {}
 </script>
