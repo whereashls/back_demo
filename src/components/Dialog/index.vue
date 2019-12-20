@@ -34,9 +34,6 @@ export default {
       this.visible = true
 
       console.log(this.$refs.content)
-      // const contentComponent = this.$refs.content
-      // console.log(contentComponent)
-
       // $nextTick里面是在下一次事件循环的时候执行的
       // 在下一次事件循环的时候，内容组件已经被挂载了
       this.$nextTick(() => {

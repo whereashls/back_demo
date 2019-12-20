@@ -23,7 +23,7 @@ export default {
   // this.$store.state,获取store里面的state的
   created () {
     this.name = this.$store.state.user.user_name
-    console.log(this.$store.state)
+    // console.log(this.$store.state)
   },
   methods: {
     exit () {

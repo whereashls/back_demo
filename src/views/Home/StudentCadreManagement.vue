@@ -18,9 +18,9 @@
     </div>
 
     <!-- 这是弹窗 -->
-    <el-dialog :visible.sync="dislogVisible" center title="新增学生干部">
+    <!-- <el-dialog :visible.sync="dislogVisible" center title="新增学生干部">
       <div>这是内容</div>
-    </el-dialog>
+    </el-dialog> -->
   </div>
 </template>
 

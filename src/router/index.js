@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import routes from './routes.js'
 
 import store from '@/store'
+import permissions from '@/assets/js/permissions'
 
 Vue.use(VueRouter)
 
@@ -32,6 +33,17 @@ router.beforeEach((to, from, next) => {
       replace: true,
       name: 'login'
     })
+  } else if (user !== null) {
+    const roleId = user.role.role_id
+    const pages = permissions[roleId]
+    if (pages.includes(to.name)) {
+      next()
+    } else {
+      next({
+        name: pages[0],
+        replace: true
+      })
+    }
   } else {
     next()
   }

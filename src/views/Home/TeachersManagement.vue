@@ -8,13 +8,9 @@
 
       <el-table :data="list.data" border v-loading="list.loading">
         <el-table-column prop="user_name" label="教师名称"></el-table-column>
-       <el-table-column prop="user_id" label="教师工号"></el-table-column>
-        <el-table-column label="操作" width="150">
-          <template slot-scope="scope">
-            <el-button size="mini" @click="update(scope.row.id)">编辑</el-button>
-            <el-button size="mini" type="danger" @click="remove(scope.row.id)">删除</el-button>
-          </template>
-        </el-table-column>
+        <el-table-column prop="user_id" label="教师工号"></el-table-column>
+        <el-table-column prop="role.role_name" label="教师角色"></el-table-column>
+        <el-table-column prop="organization.organization_name" label="所属组织"></el-table-column>
       </el-table>
 
       <el-pagination
@@ -31,7 +27,7 @@
 </template>
 
 <script>
-import { getTeacherList } from '@/api/teacher.js'
+import { getUserList } from '@/api/user.js'
 export default {
   data () {
     return {
@@ -48,24 +44,18 @@ export default {
     this.getList()
   },
   methods: {
-    sayHello () {
-      console.log('Hello')
-    },
-    sayWorld () {
-      console.log('World')
-    },
     getList () {
       if (this.list.loading) return false
       this.list.loading = true
-      getTeacherList({
+      getUserList({
       // 控制分页
-        all: true, // 是否获取全部用户
+        all: false, // 是否获取全部用户
         page: 1, // 从第几页开始，默认为1,
         page_size: 10, // 一页包含多少条用户信息，默认为10
-
-        // 查询条件
-        user_id: localStorage.getItem('user_id'),
         role_id: 3 // 根据身份id  用户类型是固定的  1 学生 2 学生干部 3 指导老师 4 管理员
+        // user_id:'',
+        // organization_id:'',
+        // asable:true
       }).then((res) => {
         console.log(res)
         console.log(res.rows)
@@ -74,61 +64,38 @@ export default {
       }).finally(() => {
         this.list.loading = false
       })
-    },
-    // 新增
-    add () {
-      this.$dialog({
-        // 我们想把这些信息传入弹窗内容里面 定义成一个对象---
-        name: 'Teacher',
-        title: '新增教师',
-        propsData: {
-          teacherName: '黄老师',
-          age: 18,
-          sex: 'Female'
-        },
-        methods: {
-          sayHello () {
-            console.log('Hello')
-          },
-          sayWorld () {
-            console.log('World')
-          }
-        }
-      })
-    },
-    // add () {
-    //   // this.$confirm
-    //   // this.$dialog
-    //   this.$confirm({
-    //     name: 'Teacher',
-    //     options: {
-    //       title: '新增教师'
-    //     },
-    //     params: {
-    //       type: 1
-    //     },
-    //     methods: {
-    //       done: () => {
-    //         this.getList()
-    //       }
-    //     }
-    //   })
-    // },
-
-    // 选择页数
-    pageChange (current) {
-      this.list.page = current
-      this.getList()
     }
   },
-  // 修改
-  upload (item) {
-    this.$dialog()
+
+  // 新增
+  add () {
+    this.$dialog({
+      // 我们想把这些信息传入弹窗内容里面 定义成一个对象---
+      name: 'Teacher',
+      title: '新增教师',
+      propsData: {
+        teacherName: '黄老师',
+        age: 18,
+        sex: 'Female'
+      },
+      methods: {
+        sayHello () {
+          console.log('Hello')
+        },
+        sayWorld () {
+          console.log('World')
+        }
+      }
+    })
+  },
+
+  // 选择页数
+  pageChange (current) {
+    this.list.page = current
+    this.getList()
   }
-  // created () {
-  //   this.getList()
-  // }
 }
+
 </script>
 
 <style scoped>

@@ -6,54 +6,71 @@
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b">
-      <!-- 教师管理 -->
-      <el-menu-item index="teachers-management" class="every">
-        <i class="el-icon-s-custom"></i>
-        <span slot="title">教师管理</span>
-      </el-menu-item>
 
-      <!-- 活动管理 -->
-      <el-menu-item index="activity-management">
-        <i class="el-icon-magic-stick"></i>
-        <span slot="title">活动管理</span>
-      </el-menu-item>
-
-      <!-- 学校组织管理 -->
-      <el-menu-item index="schoolOrganization-management">
-        <i class="el-icon-files"></i>
-        <span slot="title">学校组织管理</span>
-      </el-menu-item>
-
-      <!-- 用户帐号管理 -->
-      <el-menu-item index="userAccount-management">
-        <i class="el-icon-user"></i>
-        <span slot="title">用户帐号管理</span>
-      </el-menu-item>
-
-      <!-- 审批活动 -->
-      <el-menu-item index="examination-management">
-        <i class="el-icon-receiving"></i>
-        <span slot="title">审批活动</span>
-      </el-menu-item>
-
-      <!-- 学生干部管理 -->
-      <el-menu-item index="studentCadre-management">
-        <i class="el-icon-user-solid"></i>
-        <span slot="title">学生干部管理</span>
+      <el-menu-item v-for="(item,index) in showMenus" :key="index" :index="item.name" >
+        <i :class="item.icon"></i>
+        <span slot="title">{{item.title}}</span>
       </el-menu-item>
     </el-menu>
   </div>
 </template>
 
 <script>
+import permissions from '@/assets/js/permissions'
 // getTeacherList
 // import { getTeacherList } from '@/api/teacher.js'
 export default {
+  data () {
+    return {
+      menus: [
+        {
+          name: 'teachers-management',
+          title: '教师管理',
+          icon: 'el-icon-s-custom'
+        },
+        {
+          name: 'activity-management',
+          title: '活动管理',
+          icon: 'el-icon-magic-stick'
+        },
+        {
+          name: 'schoolOrganization-management',
+          title: '学校组织管理',
+          icon: 'el-icon-files'
+        },
+        {
+          name: 'userAccount-management',
+          title: '用户帐号管理',
+          icon: 'el-icon-user'
+        },
+        {
+          name: 'examination-management',
+          title: '审批活动',
+          icon: 'el-icon-receiving'
+        },
+        {
+          name: 'studentCadre-management',
+          title: '学生干部管理',
+          icon: 'el-icon-user-solid'
+        }
+      ]
+    }
+  },
   computed: {
     currentRouterName () {
-      // console.log('后台获取token' + this.$store.getters.token)
-      console.log('后台获取token' + localStorage.getItem('token'))
       return this.$route.name
+    },
+    // 需要显示的菜单
+    showMenus () {
+      const roleId = this.$store.state.user.role.role_id
+      const pages = permissions[roleId]
+      const menus = []
+      this.menus.forEach(item => {
+        if (pages.includes(item.name)) {
+          menus.push(item)
+        }
+      })
+      return menus
     }
   },
   methods: {
