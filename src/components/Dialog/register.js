@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Dialog from './index.vue'
+import router from '@/router'
+import store from '@/store'
 
 Vue.prototype.$dialog = obj => {
   // console.log(obj)// {title:'新增'}
@@ -17,6 +19,8 @@ Vue.prototype.$dialog = obj => {
 
   // 实例化
   const DialogInstant = new DialogComponent({
+    router,
+    store,
     // 传递数据时用propsData进行传递
     propsData: {
       name: obj.name,

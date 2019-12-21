@@ -4,5 +4,6 @@
 
 <script>
 import './assets/styles/reset.css'
+import './assets/styles/reset.plugins.css'
 export default {}
 </script>

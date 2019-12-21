@@ -7,7 +7,8 @@
 
     <div class="content-body">
       <el-table v-loading.box="list.loading" :data="list.data" border height="100%">
-        <el-table-column prop="organization_name" label="组织名称"></el-table-column>
+        <el-table-column prop="category_name" label="分类名称"></el-table-column>
+        <el-table-column prop="category_score" label="活动分数"></el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button type="primary" size="mini" @click="edit(scope.row)">编辑</el-button>
@@ -20,7 +21,7 @@
 </template>
 
 <script>
-import { getOrganizationsList, deleteOrganizations } from '@/api/organizations'
+import { getCategoriesList, deleteCategories } from '@/api/categories'
 
 export default {
   data () {
@@ -39,7 +40,7 @@ export default {
     getList () {
       if (this.loading) return false
       this.loading = true
-      getOrganizationsList().then(res => {
+      getCategoriesList().then(res => {
         this.list.data = res
       }).finally(() => {
         this.loading = false
@@ -47,8 +48,8 @@ export default {
     },
     add () {
       this.$dialog({
-        title: '新增组织',
-        name: 'SchoolOrganization',
+        title: '新增分类',
+        name: 'Categories',
         propsData: {
           type: 1
         },
@@ -61,12 +62,13 @@ export default {
     },
     edit (item) {
       this.$dialog({
-        title: '编辑组织',
-        name: 'SchoolOrganization',
+        title: '编辑分类',
+        name: 'Categories',
         propsData: {
           type: 2,
-          id: item.organization_id,
-          name: item.organization_name
+          id: item.category_id,
+          name: item.category_name,
+          score: item.category_score
         },
         methods: {
           done: () => {
@@ -76,7 +78,7 @@ export default {
       })
     },
     del (item) {
-      deleteOrganizations(item.organization_id).then(res => {
+      deleteCategories(item.category_id).then(res => {
         if (res.deleted) {
           this.$message.success('删除成功')
           this.getList()

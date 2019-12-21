@@ -6,6 +6,7 @@ import SchoolOrganizationManagement from '../views/Home/SchoolOrganizationManage
 import UserAccountManagement from '../views/Home/UserAccountManagement'
 import ExaminationApproval from '../views/Home/ExaminationApproval'
 import StudentCadreManagement from '../views/Home/StudentCadreManagement'
+import CategoriesManagement from '../views/Home/CategoriesManagement'
 import MyError from '../views/errorPage/404'
 
 const routes = [
@@ -26,6 +27,11 @@ const routes = [
         path: 'activity-management',
         name: 'activity-management',
         component: ActivityManagement
+      },
+      {
+        path: 'categories-management',
+        name: 'categories-management',
+        component: CategoriesManagement
       },
       {
         path: 'schoolOrganization-management',

@@ -34,6 +34,11 @@ export default {
           icon: 'el-icon-magic-stick'
         },
         {
+          name: 'categories-management',
+          title: '活动分类管理',
+          icon: 'el-icon-s-promotion'
+        },
+        {
           name: 'schoolOrganization-management',
           title: '学校组织管理',
           icon: 'el-icon-files'

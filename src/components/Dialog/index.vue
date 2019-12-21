@@ -1,5 +1,5 @@
 <template>
-  <el-dialog :title="title" :visible.sync="visible" @close="closed" :append-to-body="true">
+  <el-dialog :title="title" :visible.sync="visible" @close="closed" :append-to-body="true" :close-on-click-modal="false">
      <components ref="content" :is="name" v-bind="contentPropsData" @hide='hide'></components>
   </el-dialog>
 </template>
@@ -15,6 +15,11 @@ export default {
   data () {
     return {
       visible: false
+    }
+  },
+  watch: {
+    $route () {
+      this.hide()
     }
   },
   // 在全局扩展里加入props进行接收

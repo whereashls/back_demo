@@ -13,6 +13,7 @@
     <div class="content-pagination">
       <el-pagination
         layout="prev, pager, next"
+        background
         :total="list.total"
         :current-page.sync="list.page"
         :page-size="list.page_size"
@@ -41,12 +42,6 @@ export default {
     this.getList()
   },
   methods: {
-    add () {
-      this.$dialog({
-        title: '新增学生干部',
-        name: 'StudentCadre'
-      })
-    },
     // 获取列表
     getList () {
       if (this.list.loading) return false
@@ -58,9 +53,20 @@ export default {
       }).then(res => {
         this.list.total = res.count
         this.list.data = res.rows
-        console.log(res.rows)
       }).finally(() => {
         this.list.loading = false
+      })
+    },
+    // 新增
+    add () {
+      this.$dialog({
+        title: '新增学生干部',
+        name: 'StudentCadre',
+        methods: {
+          done: () => {
+            this.getList()
+          }
+        }
       })
     },
     // 当分页器选择页面的时候触发

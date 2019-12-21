@@ -1,41 +1,49 @@
 <template>
   <div class="page">
-    <div class="content">
-      <div class="content-header">
-        <span>共{{list.total}}条结果</span>
-        <el-button  @click="add" size="medium" type="primary">新增</el-button>
-      </div>
+    <div class="content-header">
+      <span>共{{list.total}}条结果</span>
+      <el-button  @click="add" size="medium" type="primary">新增</el-button>
+    </div>
 
-      <el-table :data="list.data" border v-loading="list.loading">
+    <div class="content-body">
+      <el-table v-loading.box="list.loading" :data="list.data" border height="100%">
         <el-table-column prop="user_name" label="教师名称"></el-table-column>
         <el-table-column prop="user_id" label="教师工号"></el-table-column>
         <el-table-column prop="role.role_name" label="教师角色"></el-table-column>
         <el-table-column prop="organization.organization_name" label="所属组织"></el-table-column>
+        <el-table-column label="操作">
+          <template slot-scope="scope">
+            <el-button type="primary" size="mini" @click="edit(scope.row)">编辑</el-button>
+            <el-button type="danger" size="mini" @click="del(scope.row)">删除</el-button>
+          </template>
+        </el-table-column>
       </el-table>
+    </div>
 
+    <div class="content-pagination">
       <el-pagination
-        class="pagination"
-        background
         layout="prev, pager, next"
-        :current-page="list.page"
-        :page-size="list.pageSize"
+        background
         :total="list.total"
-        @current-change="pageChange">
+        :current-page.sync="list.page"
+        :page-size="list.page_size"
+        @current-change="handleCurrentPageChange">
       </el-pagination>
     </div>
   </div>
 </template>
 
 <script>
-import { getUserList } from '@/api/user.js'
+import { getUserList, deleteUser } from '@/api/user.js'
+
 export default {
   data () {
     return {
       list: {
-        data: [],
-        pageSize: 11,
-        page: 1,
         total: 0,
+        page: 1,
+        page_size: 10,
+        data: [],
         loading: false
       }
     }
@@ -48,51 +56,60 @@ export default {
       if (this.list.loading) return false
       this.list.loading = true
       getUserList({
-      // 控制分页
-        all: false, // 是否获取全部用户
-        page: 1, // 从第几页开始，默认为1,
-        page_size: 10, // 一页包含多少条用户信息，默认为10
-        role_id: 3 // 根据身份id  用户类型是固定的  1 学生 2 学生干部 3 指导老师 4 管理员
-        // user_id:'',
-        // organization_id:'',
-        // asable:true
+        page: this.list.page, // 从第几页开始，默认为1,
+        page_size: this.list.page_zie, // 一页包含多少条用户信息，默认为10
+        role_id: 3, // 根据身份id  用户类型是固定的  1 学生 2 学生干部 3 指导老师 4 管理员
+        usable: true
       }).then((res) => {
-        console.log(res)
-        console.log(res.rows)
-        this.list.data = res.rows
         this.list.total = res.count
+        this.list.data = res.rows
       }).finally(() => {
         this.list.loading = false
       })
-    }
-  },
-
-  // 新增
-  add () {
-    this.$dialog({
-      // 我们想把这些信息传入弹窗内容里面 定义成一个对象---
-      name: 'Teacher',
-      title: '新增教师',
-      propsData: {
-        teacherName: '黄老师',
-        age: 18,
-        sex: 'Female'
-      },
-      methods: {
-        sayHello () {
-          console.log('Hello')
+    },
+    // 新增
+    add () {
+      this.$dialog({
+        name: 'Teacher',
+        title: '新增教师',
+        propsData: {
+          type: 1
         },
-        sayWorld () {
-          console.log('World')
+        methods: {
+          done: () => {
+            this.getList()
+          }
         }
-      }
-    })
-  },
-
-  // 选择页数
-  pageChange (current) {
-    this.list.page = current
-    this.getList()
+      })
+    },
+    // 编辑
+    edit (item) {
+      this.$dialog({
+        name: 'Teacher',
+        title: '编辑教师',
+        propsData: {
+          type: 2,
+          id: item.ID,
+          organization: item.organization
+        },
+        methods: {
+          done: () => {
+            this.getList()
+          }
+        }
+      })
+    },
+    // 删除
+    del (item) {
+      deleteUser(item.ID).then(res => {
+        this.$message.success('删除成功')
+        this.getList()
+      })
+    },
+    // 选择页数
+    handleCurrentPageChange () {
+      this.getList()
+    }
   }
 }
 
@@ -100,26 +117,26 @@ export default {
 
 <style scoped>
 .page{
-  min-height: 100%;
+  padding: 15px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-}
-.page .content{
-  padding:15px;
-  flex-grow: 1;
   background: rgba(243, 240, 240, 0.568);
 }
-.page .content .content-header{
+.page .content-header {
   display: flex;
   justify-content: space-between;
   margin-bottom:20px;
-  align-items: center; /* 垂直居中 */
+  align-items: center;
 }
-.page .content .pagination {
-  margin-top: 20px;
+.page .content-body {
+  flex-grow: 1;
+  height: 1px;
+  overflow: hidden;
+}
+
+.page .content-pagination {
   text-align: center;
-}
-.page .content .null {
-  color: #aaa;
+  margin-top: 10px;
 }
 </style>

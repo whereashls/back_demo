@@ -8,10 +8,11 @@
         <el-table-column prop="activity_title" label="活动标题"></el-table-column>
         <el-table-column prop="activity_introduce" label="活动介绍"></el-table-column>
         <el-table-column prop="category.category_name" label="活动类别"></el-table-column>
-        <el-table-column label="是否通过审批">
+        <el-table-column label="审批结果">
           <template slot-scope="scope">
-            <span v-if="scope.row.passed">是</span>
-            <span v-else>否</span>
+            <span v-if="scope.row.passed === null">未审核</span>
+            <span v-else-if="scope.row.passed === false">已拒绝</span>
+            <span v-else-if="scope.row.passed === true">已同意</span>
           </template>
         </el-table-column>
         <el-table-column label="操作">
@@ -47,7 +48,6 @@ export default {
       getActivities({
         all: true
       }).then(res => {
-        console.log(res)
         this.list.data = res.teacherActivities
       }).finally(() => {
         this.list.loading = false
